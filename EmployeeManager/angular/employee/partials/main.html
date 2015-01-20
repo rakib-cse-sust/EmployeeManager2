@@ -1,0 +1,33 @@
+﻿<div style="height: 30px"></div>
+
+<input type="text" class="form-control" style="width: 225px;" data-ng-model="search.Name" placeholder="Search Employee by name ...">
+
+<div style="height: 10px"></div>
+
+<div class="row">
+    <div data-ng-repeat="t in FilterEmployee = Employee | filter:search.Name | startFrom:(bigCurrentPage-1)*itemsPerPage | limitTo:itemsPerPage">
+        <div class="col-sm-4">
+            <div class="panel panel-info">
+
+                <button data-ng-click="deleteEmployee(t.id)" aria-label="Close" data-dismiss="alert" class="close" type="button" style="padding: 5px;"><span aria-hidden="true">×</span></button>
+                <button data-ng-click="updateEmployee(t)" class="close" type="button" style="padding: 3px;"><span class="glyphicon glyphicon-pencil" style="font-size: 0.7em;"></span></button> 
+
+                <div class="panel-body">                
+                    <ul class="media-list">
+                        <li class="media">
+                            <div class="media-left">
+                                <img style="width: 64px; max-height: 74px;" src="{{t.imagePath}}" />
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">{{t.name}}</h4>
+                                <p>{{t.email}}</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<pagination total-items="bigTotalItems" items-per-page="itemsPerPage" ng-model="bigCurrentPage" max-size="maxPageSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
