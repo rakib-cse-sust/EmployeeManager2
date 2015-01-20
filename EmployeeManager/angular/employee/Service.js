@@ -10,13 +10,10 @@
             Add: 1,
             Update: 2
         }
-    }
-
-    var urlBase = '/api/EmployeeSetup';
+    }    
 
     function SaveEmployee(employee, uploadUrl) {
-        //var request = $http.post('/Controllers/EmployeeSetup', employee);
-        var request = $http.get(urlBase, 5);
+        var request = $http.post('/api/EmployeeSetup', employee);
         return (request.then(handleSuccess, handleError));
     }
 
