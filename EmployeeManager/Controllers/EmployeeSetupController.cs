@@ -11,9 +11,10 @@ namespace EmployeeManager.Controllers
     public class EmployeeSetupController : ApiController
     {
         // GET api/<controller>
-        public IEnumerable<string> Get()
+        public List<Employee> Get()
         {
-            return new string[] { "value1", "value2" };
+            List<Employee> _list = new List<Employee>();
+            return _list;
         }
 
         // GET api/<controller>/5

@@ -220,8 +220,11 @@
     <Content Include="angular\employee\partials\main.html" />
     <Content Include="angular\employee\Service.js" />
     <Content Include="angular\images\George.jpg" />
+    <Content Include="angular\images\George1.jpg" />
     <Content Include="angular\images\Jahan.jpg" />
+    <Content Include="angular\images\Jahan1.jpg" />
     <Content Include="angular\images\Rakib.jpg" />
+    <Content Include="angular\images\Rakib1.jpg" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

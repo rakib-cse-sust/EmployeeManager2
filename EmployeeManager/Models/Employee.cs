@@ -11,10 +11,13 @@ namespace EmployeeManager.Models
         public string EmployeeName { get; set; }
         public string EmployeeEmail { get; set; }
         public int EmployeeId { get; set; }
-        public Image EmployeeImage { get; set; }
+        public EmployeeImageDetails EmployeeImage { get; set; }
     }
-    //public class EmployeeDetails :Employee
-    //{
-
-    //}
+    public class EmployeeImageDetails
+    {
+        public string ImageResult { get; set; }
+        public string ImageName { get; set; }
+        public int ImageSize { get; set; }
+        public string ImageType { get; set; }
+    }
 }

@@ -7,7 +7,7 @@
 <div class="row">
     <div data-ng-repeat="t in FilterEmployee = Employee | filter:search.Name | startFrom:(bigCurrentPage-1)*itemsPerPage | limitTo:itemsPerPage">
         <div class="col-sm-4">
-            <div class="panel panel-info">
+            <div class="panel panel-info" style="height: 115px;">
 
                 <button data-ng-click="deleteEmployee(t.id)" aria-label="Close" data-dismiss="alert" class="close" type="button" style="padding: 5px;"><span aria-hidden="true">×</span></button>
                 <button data-ng-click="updateEmployee(t)" class="close" type="button" style="padding: 3px;"><span class="glyphicon glyphicon-pencil" style="font-size: 0.7em;"></span></button> 

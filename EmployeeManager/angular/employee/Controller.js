@@ -129,11 +129,19 @@ function EmployeeSetupModalController($scope, $http, $modalInstance, settings, e
 
     $scope.save = function () {
         var file = $scope.myFile;
+
+        var imageDetails = {
+            ImageResult : file.result,
+            ImageName : file.name,
+            ImageSize :file.size,
+            ImageType :file.type
+        };
+
         var employeeObj = {
             EmployeeName: $scope.name,
             EmployeeEmail: $scope.email,
             EmployeeId: $scope.email,
-            EmployeeImage: file
+            EmployeeImage: imageDetails
         };        
         //console.log('file is ' + JSON.stringify(file));
         var uploadUrl = "/angular/images";
