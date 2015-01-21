@@ -9,7 +9,7 @@
         <div class="col-sm-4">
             <div class="panel panel-info" style="height: 115px;">
 
-                <button data-ng-click="deleteEmployee(t.id)" aria-label="Close" data-dismiss="alert" class="close" type="button" style="padding: 5px;"><span aria-hidden="true">×</span></button>
+                <button data-ng-click="deleteEmployee(t.EmployeeId)" aria-label="Close" data-dismiss="alert" class="close" type="button" style="padding: 5px;"><span aria-hidden="true">×</span></button>
                 <button data-ng-click="updateEmployee(t)" class="close" type="button" style="padding: 3px;"><span class="glyphicon glyphicon-pencil" style="font-size: 0.7em;"></span></button> 
 
                 <div class="panel-body">                
@@ -19,8 +19,8 @@
                                 <img style="width: 64px; max-height: 74px;" src="{{t.imagePath}}" />
                             </div>
                             <div class="media-body">
-                                <h4 class="media-heading">{{t.name}}</h4>
-                                <p>{{t.email}}</p>
+                                <h4 class="media-heading">{{t.EmployeeName}}</h4>
+                                <p>{{t.EmployeeEmail}}</p>
                             </div>
                         </li>
                     </ul>

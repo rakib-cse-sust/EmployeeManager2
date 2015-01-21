@@ -18,7 +18,7 @@
     }
 
     function GetAllCustomers() {
-        var request = $http.get('/Global/Advert/Controllers/EmployeeSetup/' + activityId + '?briefStatusType=' + briefStatusType);
+        var request = $http.get('/api/EmployeeSetup');
         return (request.then(handleSuccess, handleError));
     }
 
