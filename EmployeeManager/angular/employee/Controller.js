@@ -53,6 +53,13 @@
         $scope.FilterEmployee = $scope.Employee.slice(begin, end);
     });
 
+    //$scope.$watch('cityName', function (newCityName) {
+    //    $scope.currentPage = 1;
+    //    $scope.filteredDestinations = $filter('filter')($scope.Employee, $scope.cityName);
+    //    $scope.totalItems = $scope.filteredDestinations.length;
+    //    $scope.noOfPages = $scope.filteredDestinations.length / $scope.pageSize;
+    //});
+
     $scope.deleteEmployee = function (id) {
         for (var i = 0; i < $scope.Employee.length; i++) {
             var employee = $scope.Employee[i];
