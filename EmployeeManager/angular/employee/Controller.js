@@ -70,7 +70,8 @@ employeeApp.controller('EmployeeController', function ($scope, $routeParams, $fi
     $scope.$watch('bigCurrentPage + itemsPerPage', function () {
         var begin = (($scope.bigCurrentPage - 1) * $scope.itemsPerPage),
             end = begin + $scope.itemsPerPage;
-        $scope.FilterEmployee = $scope.Employee.slice(begin, end);       
+        $scope.FilterEmployee = $scope.Employee.slice(begin, end);
+        //$scope.bigTotalItems = $scope.FilterEmployee.length;
     });
 
     $scope.deleteEmployee = function (id) {
