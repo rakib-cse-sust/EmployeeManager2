@@ -101,6 +101,7 @@ function EmployeeSetupModalController($scope, $http, $modalInstance, settings, e
             $scope.name = $scope.Settings.Employee.EmployeeName;
             $scope.email = $scope.Settings.Employee.EmployeeEmail;
             $scope.id = $scope.Settings.Employee.EmployeeId;
+            $scope.imageSrc = $scope.Settings.Employee.EmployeeImageSrc;
         }
     }
 
