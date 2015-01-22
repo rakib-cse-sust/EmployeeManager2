@@ -1,46 +1,21 @@
 ﻿employeeApp.controller('EmployeeController', function ($scope, $routeParams, $filter, employeeService, $location, $modal) {
-    
+    $scope.Employee = [];
     init();
 
     function init() {
         
         $scope.FormStatusType = employeeService.getFormStatusType();
 
-        //employeeService.getAllCustomers().then(function (data) {
-        //    $scope.Employee = data;
-        //});
+        employeeService.getAllCustomers().then(function (data) {
 
-        var employee = [
-            { "EmployeeId": 1, "EmployeeName": "Khan Jahan", "EmployeeEmail": "Khan@gmail.com", "imagePath": "/angular/images/Jahan.jpg" },
-            { "EmployeeId": 2, "EmployeeName": "Frank Miller", "EmployeeEmail": "Frank@gmail.com", "imagePath": "/angular/images/Rakib.jpg" },
-            { "EmployeeId": 3, "EmployeeName": "James Lewis", "EmployeeEmail": "James@gmail.com", "imagePath": "/angular/images/George.jpg" },
-            { "EmployeeId": 4, "EmployeeName": "George Robinson", "EmployeeEmail": "George@gmail.com", "imagePath": "/angular/images/Jahan.jpg" },
-            { "EmployeeId": 5, "EmployeeName": "Rakib Lewis", "EmployeeEmail": "Rakib@gmail.com", "imagePath": "/angular/images/Rakib.jpg" },
-            { "EmployeeId": 6, "EmployeeName": "Jahan Robinson", "EmployeeEmail": "Jahan@gmail.com", "imagePath": "/angular/images/George.jpg" },
+            $scope.Employee = data;
 
-            { "EmployeeId": 7, "EmployeeName": "ASM Robert Williams", "EmployeeEmail": "Robert@gmail.com", "imagePath": "/angular/images/George.jpg" },
-            { "EmployeeId": 8, "EmployeeName": "ADL Khan Jahan", "EmployeeEmail": "Khan@gmail.com", "imagePath": "/angular/images/Jahan.jpg" },
-            { "EmployeeId": 9, "EmployeeName": "DKJ Frank Miller", "EmployeeEmail": "Frank@gmail.com", "imagePath": "/angular/images/Rakib.jpg" },
-            { "EmployeeId": 10, "EmployeeName": "LOI James Lewis", "EmployeeEmail": "James@gmail.com", "imagePath": "/angular/images/George.jpg" },
-            { "EmployeeId": 11, "EmployeeName": "MHN George Robinson", "EmployeeEmail": "George@gmail.com", "imagePath": "/angular/images/Jahan.jpg" },
-            { "EmployeeId": 12, "EmployeeName": "WER Rakib Lewis", "EmployeeEmail": "Rakib@gmail.com", "imagePath": "/angular/images/Rakib.jpg" },
-            { "EmployeeId": 13, "EmployeeName": "MKJ Jahan Robinson", "EmployeeEmail": "Jahan@gmail.com", "imagePath": "/angular/images/George.jpg" },
+            $scope.itemsPerPage = 9;
+            $scope.maxPageSize = Math.ceil($scope.Employee.length / $scope.itemsPerPage);
+            $scope.bigTotalItems = $scope.Employee.length;
+            $scope.bigCurrentPage = 1;
 
-            { "EmployeeId": 14, "EmployeeName": "RTY Robert Williams", "EmployeeEmail": "Robert@gmail.com", "imagePath": "/angular/images/George.jpg" },
-            { "EmployeeId": 15, "EmployeeName": "GHJ Khan Jahan", "EmployeeEmail": "Khan@gmail.com", "imagePath": "/angular/images/Jahan.jpg" },
-            { "EmployeeId": 16, "EmployeeName": "VBN Frank Miller", "EmployeeEmail": "Frank@gmail.com", "imagePath": "/angular/images/Rakib.jpg" },
-            { "EmployeeId": 17, "EmployeeName": "WSD James Lewis", "EmployeeEmail": "James@gmail.com", "imagePath": "/angular/images/George.jpg" },
-            { "EmployeeId": 18, "EmployeeName": "KOI George Robinson", "EmployeeEmail": "George@gmail.com", "imagePath": "/angular/images/Jahan.jpg" },
-            { "EmployeeId": 19, "EmployeeName": "QAZ Rakib Lewis", "EmployeeEmail": "Rakib@gmail.com", "imagePath": "/angular/images/Rakib.jpg" },
-            { "EmployeeId": 20, "EmployeeName": "MOK Jahan Robinson", "EmployeeEmail": "Jahan@gmail.com", "imagePath": "/angular/images/George.jpg" }
-        ];
-
-        $scope.Employee = employee;
-
-        $scope.itemsPerPage = 9;
-        $scope.maxPageSize = Math.ceil($scope.Employee.length / $scope.itemsPerPage);
-        $scope.bigTotalItems = $scope.Employee.length;
-        $scope.bigCurrentPage = 1;
+        });
     }
 
     $scope.setPage = function (pageNo) {
@@ -52,13 +27,6 @@
             end = begin + $scope.itemsPerPage;
         $scope.FilterEmployee = $scope.Employee.slice(begin, end);
     });
-
-    //$scope.$watch('cityName', function (newCityName) {
-    //    $scope.currentPage = 1;
-    //    $scope.filteredDestinations = $filter('filter')($scope.Employee, $scope.cityName);
-    //    $scope.totalItems = $scope.filteredDestinations.length;
-    //    $scope.noOfPages = $scope.filteredDestinations.length / $scope.pageSize;
-    //});
 
     $scope.deleteEmployee = function (id) {
         for (var i = 0; i < $scope.Employee.length; i++) {
@@ -93,7 +61,7 @@
         });
 
         modalInstance.result.then(function (data) {            
-            employee.imagePath = data.EmployeeImage.ImageResult;
+            employee.EmployeeImageSrc = data.EmployeeImage.ImageResult;
         }, function () {
         });
     };
@@ -156,7 +124,6 @@ function EmployeeSetupModalController($scope, $http, $modalInstance, settings, e
             EmployeeId: $scope.email,
             EmployeeImage: imageDetails
         };        
-        //console.log('file is ' + JSON.stringify(file));
         var uploadUrl = "/angular/images";
         employeeService.saveEmployee(employeeObj, uploadUrl).then(function (data) {
             $modalInstance.close(data);
@@ -188,3 +155,48 @@ function EmployeeSetupModalController($scope, $http, $modalInstance, settings, e
 //    { "id": 19, "name": "QAZ Rakib Lewis", "email": "Rakib@gmail.com", "imagePath": "/angular/images/Rakib.jpg" },
 //    { "id": 20, "name": "MOK Jahan Robinson", "email": "Jahan@gmail.com", "imagePath": "/angular/images/George.jpg" }
 //];
+
+
+//var employee = [
+//    { "EmployeeId": 1, "EmployeeName": "Khan Jahan", "EmployeeEmail": "Khan@gmail.com", "imagePath": "/angular/images/Jahan.jpg" },
+//    { "EmployeeId": 2, "EmployeeName": "Frank Miller", "EmployeeEmail": "Frank@gmail.com", "imagePath": "/angular/images/Rakib.jpg" },
+//    { "EmployeeId": 3, "EmployeeName": "James Lewis", "EmployeeEmail": "James@gmail.com", "imagePath": "/angular/images/George.jpg" },
+//    { "EmployeeId": 4, "EmployeeName": "George Robinson", "EmployeeEmail": "George@gmail.com", "imagePath": "/angular/images/Jahan.jpg" },
+//    { "EmployeeId": 5, "EmployeeName": "Rakib Lewis", "EmployeeEmail": "Rakib@gmail.com", "imagePath": "/angular/images/Rakib.jpg" },
+//    { "EmployeeId": 6, "EmployeeName": "Jahan Robinson", "EmployeeEmail": "Jahan@gmail.com", "imagePath": "/angular/images/George.jpg" },
+
+//    { "EmployeeId": 7, "EmployeeName": "ASM Robert Williams", "EmployeeEmail": "Robert@gmail.com", "imagePath": "/angular/images/George.jpg" },
+//    { "EmployeeId": 8, "EmployeeName": "ADL Khan Jahan", "EmployeeEmail": "Khan@gmail.com", "imagePath": "/angular/images/Jahan.jpg" },
+//    { "EmployeeId": 9, "EmployeeName": "DKJ Frank Miller", "EmployeeEmail": "Frank@gmail.com", "imagePath": "/angular/images/Rakib.jpg" },
+//    { "EmployeeId": 10, "EmployeeName": "LOI James Lewis", "EmployeeEmail": "James@gmail.com", "imagePath": "/angular/images/George.jpg" },
+//    { "EmployeeId": 11, "EmployeeName": "MHN George Robinson", "EmployeeEmail": "George@gmail.com", "imagePath": "/angular/images/Jahan.jpg" },
+//    { "EmployeeId": 12, "EmployeeName": "WER Rakib Lewis", "EmployeeEmail": "Rakib@gmail.com", "imagePath": "/angular/images/Rakib.jpg" },
+//    { "EmployeeId": 13, "EmployeeName": "MKJ Jahan Robinson", "EmployeeEmail": "Jahan@gmail.com", "imagePath": "/angular/images/George.jpg" },
+
+//    { "EmployeeId": 14, "EmployeeName": "RTY Robert Williams", "EmployeeEmail": "Robert@gmail.com", "imagePath": "/angular/images/George.jpg" },
+//    { "EmployeeId": 15, "EmployeeName": "GHJ Khan Jahan", "EmployeeEmail": "Khan@gmail.com", "imagePath": "/angular/images/Jahan.jpg" },
+//    { "EmployeeId": 16, "EmployeeName": "VBN Frank Miller", "EmployeeEmail": "Frank@gmail.com", "imagePath": "/angular/images/Rakib.jpg" },
+//    { "EmployeeId": 17, "EmployeeName": "WSD James Lewis", "EmployeeEmail": "James@gmail.com", "imagePath": "/angular/images/George.jpg" },
+//    { "EmployeeId": 18, "EmployeeName": "KOI George Robinson", "EmployeeEmail": "George@gmail.com", "imagePath": "/angular/images/Jahan.jpg" },
+//    { "EmployeeId": 19, "EmployeeName": "QAZ Rakib Lewis", "EmployeeEmail": "Rakib@gmail.com", "imagePath": "/angular/images/Rakib.jpg" },
+//    { "EmployeeId": 20, "EmployeeName": "MOK Jahan Robinson", "EmployeeEmail": "Jahan@gmail.com", "imagePath": "/angular/images/George.jpg" }
+//];
+
+//$scope.Employee = employee;      
+
+
+//$scope.itemsPerPage = 9;
+//$scope.maxPageSize = Math.ceil($scope.Employee.length / $scope.itemsPerPage);
+//$scope.bigTotalItems = $scope.Employee.length;
+//$scope.bigCurrentPage = 1;
+
+//$scope.Employee = {};
+//employeeService.getAllCustomers().then(function (data) {
+//    $scope.Employee = data;
+
+//    $scope.itemsPerPage = 9;
+//    $scope.maxPageSize = Math.ceil($scope.Employee.length / $scope.itemsPerPage);
+//    $scope.bigTotalItems = $scope.Employee.length;
+//    $scope.bigCurrentPage = 1;
+
+//});

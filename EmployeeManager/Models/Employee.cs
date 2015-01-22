@@ -11,6 +11,7 @@ namespace EmployeeManager.Models
         public string EmployeeName { get; set; }
         public string EmployeeEmail { get; set; }
         public int EmployeeId { get; set; }
+        public string EmployeeImageSrc { get; set; }
         public EmployeeImageDetails EmployeeImage { get; set; }
     }
     public class EmployeeImageDetails
