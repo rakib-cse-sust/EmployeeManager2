@@ -2,19 +2,20 @@
 using EmployeeManager.Models;
 using System.Collections.Generic;
 
-namespace EmployeeManager.Service
+
+namespace EmployeeManager.EM.Service
 {
     public class EmployeeSetup
     {
-        private Common _common;
+        private Commons _common;
         public EmployeeSetup()
         {
+            _common = new Commons();
         }
 
         public List<Employee> GetEmployeeDetails(int employeeId)
         {
-            List<Employee> _list = new List<Employee>();
-            _common = new Common();
+            List<Employee> _list = new List<Employee>();            
 
             var filePath = System.Web.Hosting.HostingEnvironment.MapPath(Configurations.EmployeeImagePath + "Jahan.jpg");
             var src = _common.GetImagebase64String(filePath);
@@ -45,9 +46,9 @@ namespace EmployeeManager.Service
         }
         public void SaveEmployeeSetupInfo(Employee employee)
         {
-            var tmpImageResult = employee.EmployeeImage.ImageResult;
             var filePath = System.Web.Hosting.HostingEnvironment.MapPath(Configurations.EmployeeImagePath + employee.EmployeeImage.ImageName);
-            _common.SaveByteArrayAsImage(filePath, tmpImageResult.Replace("data:image/jpeg;base64,", ""));
+            var imgSrc = employee.EmployeeImage.ImageResult.Replace("data:image/jpeg;base64,", "");
+            _common.SaveByteArrayAsImage(filePath, imgSrc);
         }
     }
 }

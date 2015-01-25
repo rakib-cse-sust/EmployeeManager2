@@ -1,15 +1,15 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-
+using System.Linq;
+using System.Web;
 
 namespace EmployeeManager.EM.Common
 {
-    public class Common
+    public class Commons
     {
-        public Common() { }
+        public Commons() { }
 
         public void SaveByteArrayAsImage(string fullOutputPath, string base64String)
         {
@@ -41,7 +41,7 @@ namespace EmployeeManager.EM.Common
             string base64String = string.Empty;
 
             try
-            {               
+            {
                 if (!File.Exists(filePath))
                 {
                     return base64String;
