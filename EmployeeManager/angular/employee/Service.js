@@ -12,7 +12,7 @@
         }
     }    
 
-    function SaveEmployee(employee, uploadUrl) {
+    function SaveEmployee(employee) {
         var request = $http.post('/api/EmployeeSetup', employee);
         return (request.then(handleSuccess, handleError));
     }

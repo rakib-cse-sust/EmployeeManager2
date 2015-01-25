@@ -13,6 +13,7 @@ namespace EmployeeManager.Models
         public int EmployeeId { get; set; }
         public string EmployeeImageSrc { get; set; }
         public EmployeeImageDetails EmployeeImage { get; set; }
+        public bool IsUpdate { get; set; }
     }
     public class EmployeeImageDetails
     {

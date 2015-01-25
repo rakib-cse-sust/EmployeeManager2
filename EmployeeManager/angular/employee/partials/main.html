@@ -1,6 +1,11 @@
 ﻿<div style="height: 30px"></div>
 
-<input type="text" class="form-control" style="width: 225px;" data-ng-model="search.Name" placeholder="Search Employee by name ...">
+<div class="form-inline">
+    <div class="form-group">
+        <input type="text" class="form-control" style="width: 225px;" data-ng-model="search.Name" placeholder="Search Employee by name ...">
+    </div>
+    <button data-ng-click="updateEmployee(t)" class="btn btn-success  btn-default" type="button"><span aria-hidden="true" class="glyphicon glyphicon-plus-sign"></span> Add new</button>
+</div>
 
 <div style="height: 10px"></div>
 

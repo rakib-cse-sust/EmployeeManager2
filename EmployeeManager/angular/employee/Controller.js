@@ -39,12 +39,15 @@
     }
 
     $scope.updateEmployee = function (employee) {
-        $scope.openEmployeeSetupPopup(employee, $scope.FormStatusType.Update);
+        if (employee == undefined) {
+            $scope.openEmployeeSetupPopup(employee, $scope.FormStatusType.Add);
+        }
+        else {
+            $scope.openEmployeeSetupPopup(employee, $scope.FormStatusType.Update);
+        }
     }
     
     $scope.openEmployeeSetupPopup = function (employee, fromStatus) {
-
-        debugger;
 
         var setting = {
             locationFrom: 'Employee Setup',
@@ -106,6 +109,7 @@ function EmployeeSetupModalController($scope, $http, $modalInstance, settings, e
             $scope.id = $scope.Settings.Employee.EmployeeId;
             $scope.imageSrc = $scope.Settings.Employee.EmployeeImageSrc;
         }
+        else { $scope.imageSrc = ''; }
     }
 
     $scope.cancel = function () {
@@ -113,25 +117,33 @@ function EmployeeSetupModalController($scope, $http, $modalInstance, settings, e
     };
 
     $scope.save = function () {
+
         var file = $scope.myFile;
 
-        var imageDetails = {
-            ImageResult : file.result,
-            ImageName : file.name,
-            ImageSize :file.size,
-            ImageType :file.type
-        };
+        if (file == undefined) {
+            imageDetails = [];
+        }
+        else {
+            var imageDetails = {
+                ImageResult: file.result,
+                ImageName: file.name,
+                ImageSize: file.size,
+                ImageType: file.type
+            };
+        }       
 
         var employeeObj = {
             EmployeeName: $scope.name,
             EmployeeEmail: $scope.email,
             EmployeeId: $scope.email,
-            EmployeeImage: imageDetails
-        };        
-        var uploadUrl = "/angular/images";
-        employeeService.saveEmployee(employeeObj, uploadUrl).then(function (data) {
+            EmployeeImage: imageDetails,
+            IsUpdate: $scope.Settings.FromStatus == 2 ? true:false
+        };
+
+        employeeService.saveEmployee(employeeObj).then(function (data) {
             $modalInstance.close(data);
         });
+
     };
 }
 
