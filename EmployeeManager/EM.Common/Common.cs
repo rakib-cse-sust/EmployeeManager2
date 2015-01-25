@@ -1,12 +1,11 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Web;
-using EmployeeManager.Models;
 
-namespace EmployeeManager.Service
+
+namespace EmployeeManager.EM.Common
 {
     public class Common
     {
@@ -33,22 +32,19 @@ namespace EmployeeManager.Service
             }
             catch (Exception e)
             {
-                
+
             }
         }
 
-        public EmployeeImageDetails GetImageFileDetails(string filePath)
+        public string GetImagebase64String(string filePath)
         {
-            EmployeeImageDetails _image = new EmployeeImageDetails();
+            string base64String = string.Empty;
 
             try
-            {
-
-                string base64String = string.Empty;
-
-                if (File.Exists(filePath))
+            {               
+                if (!File.Exists(filePath))
                 {
-                    _image.ImageResult = string.Empty;
+                    return base64String;
                 }
 
                 Image image = Image.FromFile(filePath);
@@ -57,15 +53,17 @@ namespace EmployeeManager.Service
                 {
                     image.Save(ms, image.RawFormat);
                     byte[] imageBytes = ms.ToArray();
-                    _image.ImageResult = Convert.ToBase64String(imageBytes);
+                    base64String = Convert.ToBase64String(imageBytes);
                 }
 
-                return _image;
-                
+                base64String = !base64String.Contains("data:image/jpeg;base64,") ? "data:image/jpeg;base64," + base64String : base64String;
+
+                return base64String;
+
             }
             catch (Exception e)
             {
-                return _image;
+                return base64String;
             }
         }
     }
