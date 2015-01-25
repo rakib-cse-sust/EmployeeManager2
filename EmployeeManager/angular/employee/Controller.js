@@ -52,7 +52,8 @@
         var setting = {
             locationFrom: 'Employee Setup',
             Employee: employee,
-            FromStatus: fromStatus
+            FromStatus: fromStatus,
+            EmployeeCount: $scope.Employee.length
         };
 
         var modalInstance = $modal.open({
@@ -109,7 +110,10 @@ function EmployeeSetupModalController($scope, $http, $modalInstance, settings, e
             $scope.id = $scope.Settings.Employee.EmployeeId;
             $scope.imageSrc = $scope.Settings.Employee.EmployeeImageSrc;
         }
-        else { $scope.imageSrc = ''; }
+        else {
+            $scope.imageSrc = '';
+            $scope.id = $scope.Settings.EmployeeCount + 1;
+        }
     }
 
     $scope.cancel = function () {
