@@ -5,81 +5,83 @@
     <h4 class="modal-title">Employee Id: {{id}}</h4> 
 </div>
 
-<div class="modal-body">
-    <div class="row">
-        <div class="col-xs-4">
-            <div class="fileinput fileinput-new" data-provides="fileinput">
-                <div class="fileinput-new thumbnail" style="width: 150px;height:130px;">
-                    <img data-ng-if="imageSrc.length > 0" src="{{imageSrc}}" alt="">
-                    <img data-ng-if="imageSrc.length < 1" src="/Content/image/empty_profile_image.JPG" alt="">
+<form name="employeeSetupForm" novalidate>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                    <div class="fileinput-new thumbnail" style="width: 130px;height:130px;">
+                        <img data-ng-if="imageSrc.length > 0" src="{{imageSrc}}" alt="">
+                        <img data-ng-if="imageSrc.length < 1" src="/Content/image/empty_profile_image.JPG" alt="">
+                    </div>
+                    <div class="fileinput-preview fileinput-exists thumbnail" style="width: 130px;height:130px;"></div>
+                    <div>
+                        <span class="btn btn-primary btn-file btn-xs">
+                            <span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
+                            <input type="file" name="file" file-model="myFile">
+                        </span>
+                        <a href="#" class="btn btn-danger btn-xs fileinput-exists" style="margin-left: 12px;" data-dismiss="fileinput">Remove</a>
+                    </div>
                 </div>
-                <div class="fileinput-preview fileinput-exists thumbnail" style="width: 150px;height:130px;"></div>
-                <div>
-                    <span class="btn btn-primary btn-file btn-xs">
-                        <span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
-                        <input type="file" name="file" file-model="myFile">
-                    </span>
-                    <a href="#" class="btn btn-danger btn-xs fileinput-exists" style="margin-left: 31px;" data-dismiss="fileinput">Remove</a>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group" ng-class="{ 'has-error' : employeeSetupForm.txtFirstName.$invalid && employeeSetupForm.txtFirstName.$dirty}">
+                    <label for="exampleInputEmail1">First name</label>
+                    <input data-ng-model="firstName" name="txtFirstName" type="text" class="form-control" placeholder="First name" required>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Last name</label>
+                    <input data-ng-model="lastName" type="text" class="form-control" placeholder="Last name">
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Date of birth</label>
+                    <input data-ng-model="dateOfBirth" type="text" class="form-control" placeholder="Date of birth">
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Sex</label>
+                    <input data-ng-model="sex" type="text" class="form-control" placeholder="First name">
                 </div>
             </div>
         </div>
-        <div class="col-xs-4">
-            <div class="form-group">
-                <label for="exampleInputEmail1">First name</label>
-                <input data-ng-model="firstName" type="text" class="form-control" placeholder="First name">
+        <div class="row">
+            <div class="col-xs-4">
+
             </div>
-        </div>
-        <div class="col-xs-4">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Last name</label>
-                <input data-ng-model="lastName" type="text" class="form-control" placeholder="Last name">
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Contact number</label>
+                    <input data-ng-model="phoneNo" type="text" class="form-control" placeholder="Contact number">
+                </div>
             </div>
-        </div>
-        <div class="col-xs-4">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Date of birth</label>
-                <input data-ng-model="dateOfBirth" type="text" class="form-control" placeholder="Date of birth">
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Address</label>
+                    <input data-ng-model="address" type="text" class="form-control" placeholder="Address">
+                </div>
             </div>
-        </div>
-        <div class="col-xs-4">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Sex</label>
-                <input data-ng-model="sex" type="text" class="form-control" placeholder="First name">
+
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">National Id</label>
+                    <input data-ng-model="nationalIdNo" type="text" class="form-control" placeholder="National Id">
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input data-ng-model="email" ng-disabled="Settings.FromStatus == 2" type="email" class="form-control" placeholder="Email address">
+                </div>
             </div>
         </div>
     </div>
-    <div class="row">   
-        <div class="col-xs-4">
-            
-        </div>
-        <div class="col-xs-4">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Contact number</label>
-                <input data-ng-model="phoneNo" type="text" class="form-control" placeholder="Contact number">
-            </div>
-        </div>
-        <div class="col-xs-4">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Address</label>
-                <input data-ng-model="address" type="text" class="form-control" placeholder="Address">
-            </div>
-        </div>
-
-        <div class="col-xs-4">
-            <div class="form-group">
-                <label for="exampleInputEmail1">National Id</label>
-                <input data-ng-model="nationalIdNo" type="text" class="form-control" placeholder="National Id">
-            </div>
-        </div>       
-        <div class="col-xs-4">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input data-ng-model="email" ng-disabled="Settings.FromStatus == 2" type="email" class="form-control" placeholder="Email address">
-            </div>
-        </div>
+    <div class="modal-footer">
+        <button ng-click="save()" ng-disabled="employeeSetupForm.$invalid" class="btn btn-primary btn-sm" type="button"><span aria-hidden="true" class="glyphicon glyphicon-floppy-save"></span> Save</button>
     </div>
-</div>
-<div class="modal-footer">
-    <button ng-click="save()" class="btn btn-primary btn-sm" type="button"><span aria-hidden="true" class="glyphicon glyphicon-floppy-save"></span> Save</button>
-</div>
-
+</form>
+ <!--ng-disabled="employeeSetupForm.$invalid"-->

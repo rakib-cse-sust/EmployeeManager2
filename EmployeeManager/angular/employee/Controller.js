@@ -60,6 +60,7 @@
             templateUrl: 'angular/employee/partials/employeeSetup.html',
             controller: EmployeeSetupModalController,
             windowClass: 'modal-center modal fade in',
+            backdrop:'static',
             resolve: {
                 settings: function () {
                     return setting;
@@ -144,9 +145,17 @@ function EmployeeSetupModalController($scope, $http, $modalInstance, settings, e
             IsUpdate: $scope.Settings.FromStatus == 2 ? true:false
         };
 
-        employeeService.saveEmployee(employeeObj).then(function (data) {
-            $modalInstance.close(data);
-        });
+        debugger;
+
+        if ($scope.employeeSetupForm.$valid) {
+            // Submit as normal
+        } else {
+            $scope.employeeSetupForm.submitted = true;
+        }
+
+        //employeeService.saveEmployee(employeeObj).then(function (data) {
+        //    $modalInstance.close(data);
+        //});
 
     };
 }
