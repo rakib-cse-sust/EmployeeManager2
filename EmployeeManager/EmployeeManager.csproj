@@ -226,6 +226,8 @@
     <Content Include="angular\images\George.jpg" />
     <Content Include="angular\images\Jahan.jpg" />
     <Content Include="angular\images\Rakib.jpg" />
+    <Content Include="angular\login\App.js" />
+    <Content Include="angular\login\Controller.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
