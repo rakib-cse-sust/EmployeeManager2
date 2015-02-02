@@ -3,10 +3,13 @@
 var employeeApp = angular.module('employeeApp', ['ngRoute', 'ui.bootstrap']);
 
 employeeApp.config(['$routeProvider', '$httpProvider', '$provide', function ($routeProvider, $httpProvider, $provide) {
+
     $routeProvider.when('/', {
         controller: 'EmployeeController',
         templateUrl: 'angular/employee/partials/main.html'
     })
     .otherwise({ redirectTo: '/' });
+
+    //$locationProvider.hashPrefix('!').html5Mode(true);
 
 }]).service('employeeService', employeeService);
