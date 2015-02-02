@@ -12,6 +12,6 @@ employeeApp.config(['$routeProvider', '$httpProvider', '$locationProvider', func
 
     //$locationProvider.hashPrefix('!').html5Mode(true);
 
-    $locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true);
 
 }]).service('employeeService', employeeService);

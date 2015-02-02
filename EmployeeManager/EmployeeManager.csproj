@@ -199,7 +199,7 @@
     <Compile Include="EM.Common\Commons.cs" />
     <Compile Include="EM.Common\Configurations.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ApiEmployeeSetupController.cs" />
+    <Compile Include="Controllers\EmployeeSetupApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="EM.Service\EmployeeSetup.cs" />

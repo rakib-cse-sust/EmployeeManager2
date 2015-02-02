@@ -14,12 +14,12 @@
     }    
 
     function SaveEmployee(employee) {
-        var request = $http.post('/api/ApiEmployeeSetup', employee);
+        var request = $http.post('/api/EmployeeSetupApi', employee);
         return (request.then(handleSuccess, handleError));
     }
 
     function GetAllCustomers() {
-        var request = $http.get('/api/ApiEmployeeSetup');
+        var request = $http.get('/api/EmployeeSetupApi');
         return (request.then(handleSuccess, handleError));
     }
 
