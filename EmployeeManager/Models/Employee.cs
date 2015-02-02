@@ -22,4 +22,11 @@ namespace EmployeeManager.Models
         public int ImageSize { get; set; }
         public string ImageType { get; set; }
     }
+
+    public class EmployeeAuthentication
+    {
+        public string UserName { get; set; }
+        public string PassWord { get; set; }
+        public bool IsAuthenticated { get; set; }
+    }
 }

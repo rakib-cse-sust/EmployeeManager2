@@ -2,7 +2,8 @@
     return {
         getAllCustomers: GetAllCustomers,
         getFormStatusType: GetFormStatusType,
-        saveEmployee: SaveEmployee
+        saveEmployee: SaveEmployee,
+        employeeAuthentication: EmployeeAuthentication
     };
 
     function GetFormStatusType() {
@@ -13,12 +14,17 @@
     }    
 
     function SaveEmployee(employee) {
-        var request = $http.post('/api/EmployeeSetup', employee);
+        var request = $http.post('/api/ApiEmployeeSetup', employee);
         return (request.then(handleSuccess, handleError));
     }
 
     function GetAllCustomers() {
-        var request = $http.get('/api/EmployeeSetup');
+        var request = $http.get('/api/ApiEmployeeSetup');
+        return (request.then(handleSuccess, handleError));
+    }
+
+    function EmployeeAuthentication(employee) {
+        var request = $http.post('/api/EmployeeSetup', employee);
         return (request.then(handleSuccess, handleError));
     }
 

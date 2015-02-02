@@ -5,10 +5,10 @@ using System.Web.Http;
 
 namespace EmployeeManager.Controllers
 {
-    public class EmployeeSetupController : ApiController
+    public class ApiEmployeeSetupController : ApiController
     {
         private EmployeeSetup _employeeSetup;
-        public EmployeeSetupController()
+        public ApiEmployeeSetupController()
         {
             _employeeSetup = new EmployeeSetup();
         }
