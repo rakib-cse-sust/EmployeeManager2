@@ -18,9 +18,18 @@
 
 @*<script src="~/angular/employee/EmployeeSetupModalController.js"></script>*@
 
-<div data-ng-app="employeeApp" id="ng-app">
+@*<div data-ng-app="employeeApp" id="ng-app">
     <div style="width:1070px" data-ng-view="">
     </div>
+</div>*@
+
+<div data-ng-app="employeeApp" >
+    <div style="width:1070px" data-ng-controller="EmployeeController">
+        <div data-ng-include="'/angular/employee/partials/main.html'"></div>
+    </div>
 </div>
+
+
+
 
 

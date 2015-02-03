@@ -57,7 +57,7 @@
         };
 
         var modalInstance = $modal.open({
-            templateUrl: 'angular/employee/partials/employeeSetup.html',
+            templateUrl: '/angular/employee/partials/employeeSetup.html',
             controller: EmployeeSetupModalController,
             windowClass: 'modal-center modal fade in',
             backdrop:'static',
