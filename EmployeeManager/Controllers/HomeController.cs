@@ -12,6 +12,8 @@ namespace EmployeeManager.Controllers
         {
             ViewBag.Title = "Home Page";
 
+            Session["IsAuthenticated"] = "1";
+
             return View();
         }
 
@@ -19,7 +21,18 @@ namespace EmployeeManager.Controllers
         {
             ViewBag.Title = "Home Page";
 
+            Session["IsAuthenticated"] = "0";
+
             return View();
+        }
+
+        public ActionResult LogOut()
+        {
+            ViewBag.Title = "Home Page";
+
+            Session["IsAuthenticated"] = "0";
+
+            return RedirectToAction("Login");
         }
     }
 }
