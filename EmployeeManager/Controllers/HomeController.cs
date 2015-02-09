@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmployeeManager.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,6 +18,31 @@ namespace EmployeeManager.Controllers
             return View();
         }
 
+        public ActionResult Authentication(EmployeeLogin loginCriteria)
+        {
+            var isLoginSuccess = true;
+
+            if (isLoginSuccess)
+            {
+                var userProfileData = new UserDetailsSessionData
+                {
+                    EmployeeId = 1,
+                    EmployeeEmail = "",
+                    EmployeeFullName = ""
+                };
+
+                Session["UserProfile"] = userProfileData;
+            }
+            else 
+            {
+
+            }
+
+            // var profileData = this.Session["UserProfile"] as UserDetailsSessionData;
+
+            return Json(new { success = true,message=""});
+        }
+        
         public ActionResult Login()
         {
             ViewBag.Title = "Home Page";
