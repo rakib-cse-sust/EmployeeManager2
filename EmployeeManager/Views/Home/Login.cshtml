@@ -108,7 +108,7 @@
 
     <div data-ng-controller="EmployeeLoginController" class="col-xs-6 col-md-3" style="border:0px solid black;">
 
-        <div data-ng-if="IsLoginMode" class="panel panel-info">
+        <div data-ng-if="IsLoginMode" class="panel panel-info" style="height:395px">
             <div class="panel-heading">
                 <div>
                     <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
@@ -134,20 +134,19 @@
                     </div>
                     <button type="submit" data-ng-click="login(Employee);" class="btn btn-success btn-block">Login</button>
 
-                    <div style="padding-top:15px; font-size:85%">
+                    <div style="position:absolute;bottom:65px; font-size:85%">
                         Forgot password ?
                         <a href="#" onclick="$('#loginbox').hide(); $('#signupbox').show()">
                             Get it here
                         </a>
                     </div>
 
-                    <div style="padding-top:15px; font-size:85%">
+                    <div style="position:absolute;bottom:40px; font-size:85%">
                         Don't have an account !
-                        <a href="#" data-ng-click="ToggleLoginRegisterView(true)">
-                            Sign up here
+                        <a href=" #" data-ng-click="ToggleLoginRegisterView(true)">
+                        Sign up here
                         </a>
                     </div>
-
 
                 </form>
 
