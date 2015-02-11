@@ -10,11 +10,11 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
 
     <script src="~/Scripts/angular.min.js"></script>
-    <script src="~/Scripts/angular-route.min.js"></script>    
+    <script src="~/Scripts/angular-route.min.js"></script>   
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -30,12 +30,11 @@
                 @Html.Partial("_menuPartial")
             }
         </div>
-    </div>
+    </nav>
     
     <div class="container-fluid">
 
         <div class="row">
-
 
             @if (@Session["IsAuthenticated"].ToString() != "1")
             {
@@ -43,24 +42,24 @@
             }
             else
             {
-                <div class="col-sm-3 col-md-2 sidebar" style="margin-top:30px;">
+                <div class="col-sm-3 col-md-2 sidebar" style="margin-top:30px;height:450px">
                     @Html.Partial("_sidebarPartial")
                 </div>
-                <div class="col-sm-9 col-md-10 main" style="margin-top:30px;">
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="margin-top:30px;">
                     @RenderBody()
                 </div>
             }
 
-
         </div>
 
-        <hr />
+        @*<hr />*@
 
-        <footer>
-            <p>&copy; @DateTime.Now.Year - All right reserved.</p>
+        <footer class="footer">
+            <p style="text-align:right;margin:15px">&copy; @DateTime.Now.Year - All right reserved.</p>
         </footer>
 
     </div>
+
     <script src="~/Scripts/angular-ui/ui-bootstrap.min.js"></script>
     <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
 
@@ -68,9 +67,11 @@
     @Scripts.Render("~/bundles/bootstrap")
 
     <link href="~/Content/jasny-bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/dashboard.css" rel="stylesheet" />
+    <link href="~/Content/sticky-footer.css" rel="stylesheet" />
     <script src="~/Scripts/jasny-bootstrap.min.js"></script>
 
-
     @RenderSection("scripts", required: false)
+
 </body>
 </html>

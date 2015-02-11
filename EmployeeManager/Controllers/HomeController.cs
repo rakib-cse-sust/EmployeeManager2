@@ -11,6 +11,15 @@ namespace EmployeeManager.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "Landing Page";
+
+            Session["IsAuthenticated"] = "1";
+
+            return View();
+        }
+
+        public ActionResult Dashboard()
+        {
             ViewBag.Title = "Home Page";
 
             Session["IsAuthenticated"] = "1";
@@ -45,7 +54,7 @@ namespace EmployeeManager.Controllers
         
         public ActionResult Login()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Login Page";
 
             Session["IsAuthenticated"] = "0";
 
@@ -54,7 +63,7 @@ namespace EmployeeManager.Controllers
 
         public ActionResult LogOut()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Logout Page";
 
             Session["IsAuthenticated"] = "0";
 
