@@ -13,9 +13,19 @@ namespace EmployeeManager.Controllers
         {
             ViewBag.Title = "Landing Page";
 
-            Session["IsAuthenticated"] = "1";
+            var sessionState = Session["IsAuthenticated"];
 
-            return View();
+            if (string.IsNullOrEmpty(sessionState.ToString())) return RedirectToAction("Login");
+
+            if (sessionState.ToString() != "1")
+            {
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                return View();
+            }
+            
         }
 
         public ActionResult Dashboard()
