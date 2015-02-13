@@ -1,4 +1,12 @@
-﻿<div class="form-inline">
+﻿<style>
+    .btn-group{
+        position: absolute;
+        right: 18px;
+        top: 3px;
+    }
+</style>
+
+<div class="form-inline">
     <div class="form-group">
         <input type="text" class="form-control" style="width: 225px;" data-ng-model="search.Name" placeholder="Search Employee by name ...">
     </div>
@@ -9,28 +17,53 @@
 
 <div class="row">
     <div data-ng-repeat="t in FilterEmployee = Employee | filter:search.Name | startFrom:(bigCurrentPage-1)*itemsPerPage | limitTo:itemsPerPage">
-        <div class="col-md-4" style="width:30%">
-            <div class="panel panel-info" style="height: 115px;">
-                <span>
-                    <button data-ng-click="deleteEmployee(t.EmployeeId)" aria-label="Close" data-dismiss="alert" class="close" type="button" style="padding: 5px;"><span aria-hidden="true">×</span></button>
-                    <button data-ng-click="updateEmployee(t)" class="close" type="button" style="padding: 3px;"><span class="glyphicon glyphicon-pencil" style="font-size: 0.7em;"></span></button>
-                </span>
-                <div class="panel-body">                
-                    <ul class="media-list">
-                        <li class="media">
-                            <div class="media-left">
-                                <img style="width: 64px; max-height: 74px;" src="{{t.EmployeeImageSrc}}" />
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">{{t.EmployeeName}}</h4>
-                                <p>{{t.EmployeeEmail}}</p>
-                            </div>
-                        </li>
-                    </ul>
+        <div class="col-md-4">          
+            
+            <div class="panel panel-info" style="border-radius:0px">
+                <div class="panel-heading" style="padding:12.5px;">
+                    <h3 class="panel-title"></h3>
+                    <div class="btn-group">
+                        <button data-ng-click="updateEmployee(t)" aria-label="Left Align" class="btn btn-default btn-xs" style="font-size:11px;" type="button"><span aria-hidden="true" class="glyphicon glyphicon-edit"></span></button>
+                        <button data-ng-click="deleteEmployee(t.EmployeeId)" aria-label="Justify" class="btn btn-default btn-xs" style="font-size:11px;" type="button"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                    </div>
+                </div>
+                <div class="panel-body">                    
+                    <div class="media">
+                        <div class="media-left" style="height: 80px;">
+                            <a href="#">
+                                <img class="media-object" style="width: 70px; max-height: 80px;" src="{{t.EmployeeImageSrc}}" alt="">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{t.EmployeeName}}</h4>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>    
 </div>
 
 <pagination total-items="bigTotalItems" items-per-page="itemsPerPage" ng-model="bigCurrentPage" max-size="maxPageSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
+
+<!--<div class="panel panel-info" style="height: 115px;">
+    <span>
+        <button data-ng-click="deleteEmployee(t.EmployeeId)" aria-label="Close" data-dismiss="alert" class="close" type="button" style="padding: 5px;"><span aria-hidden="true">×</span></button>
+        <button data-ng-click="updateEmployee(t)" class="close" type="button" style="padding: 3px;"><span class="glyphicon glyphicon-pencil" style="font-size: 0.7em;"></span></button>
+    </span>
+    <div class="panel-body">
+        <ul class="media-list">
+            <li class="media">
+                <div class="media-left">
+                    <img style="width: 64px; max-height: 74px;" src="{{t.EmployeeImageSrc}}" />
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">{{t.EmployeeName}}</h4>
+                    <p>{{t.EmployeeEmail}}</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>-->
+
