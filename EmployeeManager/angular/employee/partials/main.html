@@ -27,15 +27,17 @@
                         <button data-ng-click="deleteEmployee(t.EmployeeId)" aria-label="Justify" class="btn btn-default btn-xs" style="font-size:11px;" type="button"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
                     </div>
                 </div>
-                <div class="panel-body">                    
+                <div class="panel-body" style="padding:10px;">
                     <div class="media">
-                        <div class="media-left" style="height: 80px;">
+                        <div class="media-left" style="height: 80px;padding-right:15px;">
                             <a href="#">
                                 <img class="media-object" style="width: 70px; max-height: 80px;" src="{{t.EmployeeImageSrc}}" alt="">
                             </a>
                         </div>
                         <div class="media-body">
                             <h4 class="media-heading">{{t.EmployeeName}}</h4>
+                            <h6><span class="glyphicon glyphicon-envelope" style="margin-right: 5px;"></span>{{t.EmployeeEmail}}</h6>
+                            <h6><span class="glyphicon glyphicon-phone-alt" style="margin-right: 5px;"></span>+8801672208631</h6>
                         </div>
                     </div>
                 </div>
@@ -45,7 +47,7 @@
     </div>    
 </div>
 
-<pagination total-items="bigTotalItems" items-per-page="itemsPerPage" ng-model="bigCurrentPage" max-size="maxPageSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
+<pagination style="margin: 0;"  total-items="bigTotalItems" items-per-page="itemsPerPage" ng-model="bigCurrentPage" max-size="maxPageSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
 
 <!--<div class="panel panel-info" style="height: 115px;">
     <span>
